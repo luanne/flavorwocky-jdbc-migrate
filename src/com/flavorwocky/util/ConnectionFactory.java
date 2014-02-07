@@ -34,8 +34,8 @@ public class ConnectionFactory {
 
     private ConnectionFactory() {
         props = new Properties();
-     //   try (InputStream is = getClass().getResourceAsStream("db.properties")) {
-        try (InputStream is =  new FileInputStream("config/db.properties")) {
+        //   try (InputStream is = getClass().getResourceAsStream("db.properties")) {
+        try (InputStream is = new FileInputStream("config/db.properties")) {
             props.load(is);
         } catch (IOException e) {
             throw new RuntimeException("Could not load properties");
@@ -45,6 +45,7 @@ public class ConnectionFactory {
 
     /**
      * Get a JDBC connection to a Neo4j Server
+     *
      * @return Connection
      * @throws SQLException if the connection couldn't be established
      */
@@ -65,6 +66,7 @@ public class ConnectionFactory {
 
     /**
      * Get a JDBC connection to an embedded database
+     *
      * @param autoCommit autoCommit setting
      * @return Connection
      * @throws SQLException if a Connection could not be established
@@ -80,20 +82,22 @@ public class ConnectionFactory {
 
     /**
      * Close the connection to the Neo4j Server
+     *
      * @throws SQLException if something went wrong
      */
     public void closeServerConnection() throws SQLException {
-        if(serverConnection!=null) {
+        if (serverConnection != null) {
             serverConnection.close();
         }
     }
 
     /**
      * Close the connection to the embedded database
+     *
      * @throws SQLException if something went wrong
      */
     public void closeEmbeddedConnection() throws SQLException {
-        if(embeddedConnection!=null) {
+        if (embeddedConnection != null) {
             embeddedConnection.close();
         }
     }

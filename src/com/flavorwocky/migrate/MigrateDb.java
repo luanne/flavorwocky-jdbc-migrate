@@ -24,7 +24,7 @@ public class MigrateDb {
             migrateUsers(conn);
 
             //Remove the category relation, set it as a property on the ingredient node (migrate later to a label)
-             migrateCategories(conn);
+            migrateCategories(conn);
 
             //Add a Pairing label on the pairing nodes
             migratePairings(conn);
